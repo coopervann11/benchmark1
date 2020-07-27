@@ -1,10 +1,19 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Getting Started: Serving Web Content</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Home page</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
-<p th:text="'Hello, ' + ${name} + '!'" />
+<p>
+    <span th:text="'Today is: ' + ${#dates.format(#dates.createNow(), 'dd MMM yyyy HH:mm')}" th:remove="tag"></span>
+</p>
+<p th:text="'Hello, ' + ${name} + ' We are Clocking Streams!'" />
+
+<p th:text="'Clocked Operation -> Imperative Style took: '" />
+<p th:text="${diffInSeconds1} + ' Seconds'" />
+<p th:text="'Clocked Operation -> New Declarative Style took:  '" />
+<p th:text="${diffInSeconds2} + ' Seconds'" />
 </body>
 </html>
