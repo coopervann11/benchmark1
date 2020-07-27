@@ -19,7 +19,7 @@ import java.util.List;
 @Controller
 public class WebController {
 
-    @GetMapping("/")
+    @GetMapping("/benchmark")
     public String mainWithParam(@RequestParam(name = "name", required = false, defaultValue = "") String name, Model model) throws Exception {
 
         File file = new ClassPathResource("/static/MOCK_DATA.csv").getFile();
@@ -49,6 +49,11 @@ public class WebController {
         model.addAttribute("diffInSeconds1", stringDate1);
         model.addAttribute("diffInSeconds2", stringDate2);
         model.addAttribute("name", name);
+        return "benchmark"; //view
+    }
+
+    @GetMapping("/")
+    public String mainWithParam() {
         return "index"; //view
     }
 }
