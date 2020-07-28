@@ -6,14 +6,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
-<p>
-    <span th:text="'Today is: ' + ${#dates.format(#dates.createNow(), 'dd MMM yyyy HH:mm')}" th:remove="tag"></span>
-</p>
-<p th:text="'Hello, ' + ${name} + ' We are Clocking Streams!'" />
+    <p>
+        <span th:text="'Today is: ' + ${#dates.format(#dates.createNow(), 'dd MMM yyyy HH:mm')}" th:remove="tag"></span>
+    </p>
+    <p th:text="' We are Clocking Streams!'" />
+    <p th:text="'Clocked Operation -> Imperative Style took: '" />
+    <p th:text="${diffInSeconds1} + ' Seconds'" />
+    <p th:text="'Clocked Operation -> New Declarative Style took:  '" />
+    <p th:text="${diffInSeconds2} + ' Seconds'" />
+    <table>
+        <thead>
+        <tr>
+            <td colspan="5"><b>All Users with Lastname that starts with </b><span th:text="${name}"></span>
+            </td>
+        </tr>
+        <tr>
+            <th> ID </th>
+            <th> FirstName </th>
+            <th> LastName </th>
+            <th> Email </th>
+            <th> IP Address </th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr th:if="${results1.empty}">
+                <td colspan="2"> RESULTS 1: No Users with Lastname that starts with <span th:text="${name}"></span></td>
+            </tr>
+            <tr th:each="result : ${results1}">
+                <td><span th:text="${result.id}"> ID </span></td>
+                <td><span th:text="${result.firstName}"> FirstName </span></td>
+                <td><span th:text="${result.lastName}"> LastName </span></td>
+                <td><span th:text="${result.email}"> Email </span></td>
+                <td><span th:text="${result.ipAddress}"> IP Address </span></td>
+            </tr>
+        </tbody>
 
-<p th:text="'Clocked Operation -> Imperative Style took: '" />
-<p th:text="${diffInSeconds1} + ' Seconds'" />
-<p th:text="'Clocked Operation -> New Declarative Style took:  '" />
-<p th:text="${diffInSeconds2} + ' Seconds'" />
+    </table>
+    <table>
+        <thead>
+        <tr>
+            <td colspan="5"><b>All Users with Lastname that starts with </b><span th:text="${name}"></span>
+            </td>
+        </tr>
+        <tr>
+            <th> ID </th>
+            <th> FirstName </th>
+            <th> LastName </th>
+            <th> Email </th>
+            <th> IP Address </th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr th:if="${results2.empty}">
+                <td colspan="2"> RESULTS 2: No Users with Lastname that starts with <span th:text="${name}"></span></td>
+            </tr>
+            <tr th:each="result2 : ${results2}">
+                <td><span th:text="${result2.id}"> ID </span></td>
+                <td><span th:text="${result2.firstName}"> FirstName </span></td>
+                <td><span th:text="${result2.lastName}"> LastName </span></td>
+                <td><span th:text="${result2.email}"> Email </span></td>
+                <td><span th:text="${result2.ipAddress}"> IP Address </span></td>
+            </tr>
+        </tbody>
+    </table>
 </body>
 </html>

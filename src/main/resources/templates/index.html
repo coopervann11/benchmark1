@@ -9,5 +9,8 @@
 <p>
     <span th:text="'Index page. Today is: ' + ${#dates.format(#dates.createNow(), 'dd MMM yyyy HH:mm')}" th:remove="tag"></span>
 </p>
+<p>
+    <a th:href="@{'/benchmark/?name=o'}">Benchmark 1: Streams vs Imperative Style (or old way).</a>
+</p>
 </body>
 </html>
